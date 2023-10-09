@@ -1,0 +1,6 @@
+001;Siti Aminah binti Ahmad;T;1400
+100;Jamaluddin bin Hasssan;B;4500
+010;Amirul Hakin bin Samad;C;1500
+045;Musalma binti Kamaruddin;S;2500
+799;Ali bin Selamat;B;5000
+014;Nor Aziaty binti Yunus;S;1600
