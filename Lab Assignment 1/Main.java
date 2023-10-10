@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -9,30 +9,40 @@ public class Main {
         Scanner intInput = new Scanner(System.in);
 
         // ArrayList<Land> lands = new ArrayList<Land>();
-        int size = intInput.nextInt();
-        Land[] lands = new Land[size];
+
+        Land[] lands = null;
 
         // read customerData.txt
         try {
             BufferedReader br = new BufferedReader(new FileReader("customerData.txt"));
-            String line = br.readLine();
+            // get the number of lines in the file
             int count = 0;
+            String line = br.readLine();
+            while (line != null) {
+                count++;
+                line = br.readLine();
+            }
+            br.close();
+
+            lands = new Land[count];
+            count = 0;
+
+            br = new BufferedReader(new FileReader("customerData.txt"));
+            line = br.readLine();
             while (line != null) {
                 String id = line.split(";")[0];
                 String ownerName = line.split(";")[1];
                 char houseType = line.split(";")[2].charAt(0);
                 double area = Double.parseDouble(line.split(";")[3]);
 
-                // lands.add(new Land(id, ownerName, houseType, area));
                 lands[count] = new Land(id, ownerName, houseType, area);
                 count++;
-
                 line = br.readLine();
             }
 
             br.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + "\nAt line: " + e.getStackTrace()[0].getLineNumber());
         }
 
         System.out.println("---------------------------------------");
@@ -86,6 +96,8 @@ public class Main {
             // System.out.println();
             // }
 
+            System.out.println("This is sorted based on the tax price");
+
         } else if (option == 2) {
             System.out.println("Sorting using Insertion Sort\n");
 
@@ -128,6 +140,8 @@ public class Main {
                 System.out.printf("Tax: RM %,.2f\n", lands[i].calculateTax());
                 System.out.println();
             }
+
+            System.out.println("This is sorted based on the ID");
 
         } else if (option == 3) {
             System.out.println("Searching using Binary Search\n");
@@ -183,6 +197,7 @@ public class Main {
                 if (lands[mid].getId().compareTo(id) < 0) {
                     low = mid + 1;
                 } else if (lands[mid].getId().compareTo(id) == 0) {
+                    System.out.println();
                     System.out.println(lands[mid].toString());
                     System.out.printf("Tax: RM %,.2f\n", lands[mid].calculateTax());
                     break;
@@ -196,7 +211,10 @@ public class Main {
 
             if (low > high) {
                 System.out.println("ID not found!");
+            } else {
+                System.out.println("This is sorted based on the ID");
             }
+
         } else {
             System.out.println("Invalid option!");
         }
