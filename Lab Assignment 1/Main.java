@@ -85,7 +85,8 @@ public class Main {
             }
 
             for (int i = 0; i < lands.length; i++) {
-                System.out.println(lands[i].toString());
+                // System.out.println(lands[i].toString());
+                System.out.println("ID: " + lands[i].getId());
                 System.out.printf("Tax: RM %,.2f\n", lands[i].calculateTax());
                 System.out.println();
             }
@@ -136,8 +137,10 @@ public class Main {
             }
 
             for (int i = 0; i < lands.length; i++) {
-                System.out.println(lands[i].toString());
-                System.out.printf("Tax: RM %,.2f\n", lands[i].calculateTax());
+                // System.out.println(lands[i].toString());
+                System.out.println("ID: " + lands[i].getId());
+                System.out.println("Owner Name: " + lands[i].getOwnerName());
+                // System.out.printf("Tax: RM %,.2f\n", lands[i].calculateTax());
                 System.out.println();
             }
 
