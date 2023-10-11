@@ -45,25 +45,23 @@ public class Main {
             System.out.println(e.getMessage() + "\nAt line: " + e.getStackTrace()[0].getLineNumber());
         }
 
-        System.out.println("---------------------------------------");
-        System.out.println("Menu Selection");
-        System.out.println("\n1. Sorting using Bubble Sort");
-        System.out.println("2. Sorting using Insertion Sort");
-        System.out.println("3. Searching using Binary Search");
-        System.out.print("\nYour Option: ");
-        int option = intInput.nextInt();
-
-        System.out.println("---------------------------------------\n");
-
-        // counter for the number of swaps
-        int counter = 0;
+        while (true){
+            System.out.println("---------------------------------------");
+            System.out.println("Menu Selection");
+            System.out.println("\n1. Sorting using Bubble Sort");
+            System.out.println("2. Sorting using Insertion Sort");
+            System.out.println("3. Searching using Binary Search");
+            System.out.println("4. Exit");
+            System.out.print("\nYour Option: ");
+            int option = intInput.nextInt();
+    
+            System.out.println("---------------------------------------\n");
         if (option == 1) {
-            System.out.println("Sorting using Bubble Sort\n");
+            bubbleSort(lands);
 
-            // sort based on the tax price and display the list
             // O(n^2)
             // for (int i = 0; i < lands.size() - 1; i++) {
-            // for (int j = 0; j < lands.size() - i - 1; j++) {
+                // for (int j = 0; j < lands.size() - i - 1; j++) {
             // if (lands.get(j).calculateTax() > lands.get(j + 1).calculateTax()) {
             // Land temp = lands.get(j);
             // lands.set(j, lands.get(j + 1));
@@ -73,33 +71,8 @@ public class Main {
             // }
             // }
 
-            for (int i = 0; i < lands.length - 1; i++) {
-                for (int j = 0; j < lands.length - i - 1; j++) {
-                    if (lands[j].calculateTax() > lands[j + 1].calculateTax()) {
-                        Land temp = lands[j];
-                        lands[j] = lands[j + 1];
-                        lands[j + 1] = temp;
-                        counter++;
-                    }
-                }
-            }
-
-            for (int i = 0; i < lands.length; i++) {
-                System.out.println(lands[i].toString());
-                System.out.printf("Tax: RM %,.2f\n", lands[i].calculateTax());
-                System.out.println();
-            }
-
-            // for (Land land : lands) {
-            // System.out.println(land.toString());
-            // System.out.printf("Tax: RM %,.2f\n", land.calculateTax());
-            // System.out.println();
-            // }
-
-            System.out.println("This is sorted based on the tax price");
-
         } else if (option == 2) {
-            System.out.println("Sorting using Insertion Sort\n");
+            insertionSort(lands);
 
             // sort based on id and display the list
             // for (int i = 1; i < lands.size(); i++) {
@@ -116,35 +89,8 @@ public class Main {
 
             // }
 
-            // for (Land land : lands) {
-            // System.out.println(land.toString());
-            // System.out.printf("Tax: RM %,.2f\n", land.calculateTax());
-            // System.out.println();
-            // }
-
-            for (int i = 1; i < lands.length; i++) {
-                Land key = lands[i];
-                int j = i - 1;
-
-                while (j >= 0 && lands[j].getId().compareTo(key.getId()) > 0) {
-                    lands[j + 1] = lands[j];
-                    j--;
-                    counter++;
-                }
-
-                lands[j + 1] = key;
-            }
-
-            for (int i = 0; i < lands.length; i++) {
-                System.out.println(lands[i].toString());
-                System.out.printf("Tax: RM %,.2f\n", lands[i].calculateTax());
-                System.out.println();
-            }
-
-            System.out.println("This is sorted based on the ID");
-
         } else if (option == 3) {
-            System.out.println("Searching using Binary Search\n");
+            binarySearch(lands);
             // sort based on id and display the list
             // for (int i = 1; i < lands.size(); i++) {
             // Land key = lands.get(i);
@@ -158,25 +104,7 @@ public class Main {
             // lands.set(j + 1, key);
             // }
 
-            for (int i = 1; i < lands.length; i++) {
-                Land key = lands[i];
-                int j = i - 1;
-
-                while (j >= 0 && lands[j].getId().compareTo(key.getId()) > 0) {
-                    lands[j + 1] = lands[j];
-                    j--;
-                }
-
-                lands[j + 1] = key;
-            }
-
-            System.out.print("Enter the ID to search: ");
-            String id = strInput.nextLine();
-
-            int low = 0;
             // int high = lands.size() - 1;
-            int high = lands.length - 1;
-            int mid = (low + high) / 2;
 
             // while (low <= high) {
             // if (lands.get(mid).getId().compareTo(id) < 0) {
@@ -193,38 +121,122 @@ public class Main {
             // counter++;
             // }
 
-            while (low <= high) {
-                if (lands[mid].getId().compareTo(id) < 0) {
-                    low = mid + 1;
-                } else if (lands[mid].getId().compareTo(id) == 0) {
-                    System.out.println();
-                    System.out.println(lands[mid].toString());
-                    System.out.printf("Tax: RM %,.2f\n", lands[mid].calculateTax());
-                    break;
-                } else {
-                    high = mid - 1;
-                }
+        } else if (option == 4) {
+            System.out.println("Thank you for using this program!");
+            break;
+        } 
 
-                mid = (low + high) / 2;
-                counter++;
-            }
-
-            if (low > high) {
-                System.out.println("ID not found!");
-            } else {
-                System.out.println("This is sorted based on the ID");
-            }
-
-        } else {
+        while (option < 1 || option > 4) {
             System.out.println("Invalid option!");
+            System.out.print("\nYour Option: ");
+            option = intInput.nextInt();
         }
 
-        if (option != 3)
-            System.out.println("Number of swaps: " + counter);
-        else
-            System.out.println("\nNumber of try: " + counter);
+        System.out.println("Enter any key to continue...");
+        strInput.nextLine();
+
+    }
+    strInput.close();
+    intInput.close();
+    }
+
+    // bubble sort method
+    public static void bubbleSort(Land[] lands) {
+
+        System.out.println("Sorting using Bubble Sort\n");
+        for(int i = 0; i < lands.length - 1; i++) {
+            for(int j = 0; j < lands.length - i - 1; j++) {
+                if(lands[j].calculateTax() > lands[j + 1].calculateTax()) {
+                    Land temp = lands[j];
+                    lands[j] = lands[j + 1];
+                    lands[j + 1] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < lands.length; i++) {
+            System.out.println(lands[i].toString());
+            System.out.printf("Tax: RM %,.2f\n", lands[i].calculateTax());
+            System.out.println();
+        }
+
+        System.out.println("This is sorted based on the tax price");
+
+    }
+
+    // insertion sort method
+    public static void insertionSort(Land[] lands) {
+
+        System.out.println("Sorting using Insertion Sort\n");
+        for (int i = 1; i < lands.length; i++) {
+            Land key = lands[i];
+            int j = i - 1;
+
+            while (j >= 0 && lands[j].getId().compareTo(key.getId()) > 0) {
+                lands[j + 1] = lands[j];
+                j--;
+            }
+
+            lands[j + 1] = key;
+        }
+
+        for (int i = 0; i < lands.length; i++) {
+            System.out.println(lands[i].toString());
+            System.out.printf("Tax: RM %,.2f\n", lands[i].calculateTax());
+            System.out.println();
+        }
+
+        System.out.println("This is sorted based on the ID");
+
+    }
+
+    // binary search method
+    public static void binarySearch(Land[] lands) {
+
+        System.out.println("Searching using Binary Search\n");
+
+        for (int i = 1; i < lands.length; i++) {
+            Land key = lands[i];
+            int j = i - 1;
+
+            while (j >= 0 && lands[j].getId().compareTo(key.getId()) > 0) {
+                lands[j + 1] = lands[j];
+                j--;
+            }
+
+            lands[j + 1] = key;
+        }
+        
+
+        Scanner strInput = new Scanner(System.in);
+        System.out.print("Enter the ID to search: ");
+        String id = strInput.nextLine();
+
+        int low = 0;
+        int high = lands.length - 1;
+        int mid = (low + high) / 2;
+
+        while (low <= high) {
+            if (lands[mid].getId().compareTo(id) < 0) {
+                low = mid + 1;
+            } else if (lands[mid].getId().compareTo(id) == 0) {
+                System.out.println();
+                System.out.println(lands[mid].toString());
+                System.out.printf("Tax: RM %,.2f\n", lands[mid].calculateTax());
+                break;
+            } else {
+                high = mid - 1;
+            }
+
+            mid = (low + high) / 2;
+        }
+
+        if (low > high) {
+            System.out.println("ID not found!");
+        } else {
+            System.out.println("This is sorted based on the ID");
+        }
 
         strInput.close();
-        intInput.close();
     }
 }
