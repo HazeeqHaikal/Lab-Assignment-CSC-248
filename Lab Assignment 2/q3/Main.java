@@ -8,6 +8,10 @@ public class Main {
 
         ArrayList<Product> listProduct1 = new ArrayList<Product>();
         ArrayList<Product> listProduct2 = new ArrayList<Product>();
+        ArrayLists arrayList = new ArrayLists();
+
+
+        System.out.println("Inserting ten products into listProduct1");
 
         // insert ten products into listProduct1
         listProduct1.add(new Product("Pen", 9.99, 100));
