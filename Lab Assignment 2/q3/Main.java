@@ -8,7 +8,6 @@ public class Main {
 
         ArrayList<Product> listProduct1 = new ArrayList<Product>();
         ArrayList<Product> listProduct2 = new ArrayList<Product>();
-        ArrayLists arrayList = new ArrayLists();
 
 
         System.out.println("Inserting ten products into listProduct1");
@@ -138,6 +137,9 @@ public class Main {
 
         System.out.println("Press enter to end program...");
         strInput.nextLine();
+
+        strInput.close();
+        intInput.close();
 
     }
 }
