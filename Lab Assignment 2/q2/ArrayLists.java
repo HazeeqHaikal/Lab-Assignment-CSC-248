@@ -21,6 +21,8 @@ public class ArrayLists {
         
         System.out.print("\n1. Add new elements to the ArrayList\n2. Delete element from a list\n3. The number of elements in the list\n4. To determine either the name exist or not in a list\n5. Sort the list of names in ascending order\n7. Exit\nEnter your choice: ");
         int choice = intInput.nextInt();
+
+        System.out.println();
         while (true) {
             if (choice == 1) {
                 System.out.print("Enter the number of elements: ");
@@ -70,7 +72,7 @@ public class ArrayLists {
             } else {
                 System.out.println("Invalid input!");
             }
-            System.out.print("\n1. Add new elements to the ArrayList\n2. Delete element from a list\n3. The number of elements in the list\n4. To determine either the name exist or not in a list\n6. Exit\nEnter your choice: ");
+            System.out.print("\n1. Add new elements to the ArrayList\n2. Delete element from a list\n3. The number of elements in the list\n4. To determine either the name exist or not in a list\n5. Sort the list of names in ascending order\n7. Exit\nEnter your choice: ");
             choice = intInput.nextInt();
 
             System.out.println();
