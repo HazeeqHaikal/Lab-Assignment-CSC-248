@@ -29,7 +29,7 @@ public class Main {
         System.out.println("Clothes list:");
         for (Cloth cloth : clothes) {
             System.out.println(cloth);
-            System.out.println("Payment: RM" + cloth.calcPayment() + "\n");
+            System.out.printf("Payment: RM %,.2f\n", cloth.calcPayment() + "\n");
         }
 
         // Calculate total payment
@@ -38,6 +38,6 @@ public class Main {
             totalPayment += cloth.calcPayment();
         }
 
-        System.out.println("Total payment: RM" + totalPayment);
+        System.out.printf("Total payment: RM %,.2f\n", totalPayment);
     }
 }

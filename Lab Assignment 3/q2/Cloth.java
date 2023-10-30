@@ -34,7 +34,8 @@ public class Cloth {
     }
 
     public String toString() {
-        return "Name: " + this.name + "\nPrice: " + this.price + "\nLength: " + this.length;
+        return "Name: " + this.name + String.format("\nPrice: RM %,.2f", this.price)
+                + String.format("\nLength: %.2f Metre", this.length);
     }
 
     public double calcPayment() {
