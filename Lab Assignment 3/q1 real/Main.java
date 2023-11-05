@@ -55,7 +55,7 @@ public class Main {
                             }
                         }
 
-                        if(idnoExists){
+                        if (idnoExists) {
                             System.out.println("The data already exists. Please re-enter.");
                             System.out.println();
                             i--;
@@ -115,7 +115,7 @@ public class Main {
                     break;
                 case 3:
                     // if the list is still empty, print out it is empty so nothing can be removed
-                    if(sList.size() == 0){
+                    if (sList.size() == 0) {
                         System.out.println("The list is empty.");
                         System.out.println();
                         break;
@@ -136,13 +136,13 @@ public class Main {
                             break;
                         }
                     }
-                    
+
                     System.out.println();
 
                     if (!found) {
                         System.out.println("The data does not exist.");
                         System.out.println();
-                    } else{
+                    } else {
 
                         System.out.println("The list after removing the data: ");
 
@@ -262,7 +262,7 @@ public class Main {
                                     name += split[(int) (Math.random() * split.length)] + " ";
                                     count++;
                                 } else {
-                                    name += split[(int) (Math.random() * split.length)]+ " ";
+                                    name += split[(int) (Math.random() * split.length)] + " ";
                                 }
 
                                 line = br.readLine();
@@ -300,8 +300,8 @@ public class Main {
                     System.out.println("Invalid choice.");
                     break;
 
-                }
-                
+            }
+
             System.out.println("Press enter to continue...");
             strInput.nextLine();
 
@@ -313,9 +313,5 @@ public class Main {
 
             System.out.println();
         }
-
-        System.out.println("Thank you for using the system.");
-        strInput.close();
-        intInput.close();
     }
 }
