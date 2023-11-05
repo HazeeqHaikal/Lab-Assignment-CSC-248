@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -9,14 +12,14 @@ public class Main {
         LinkedList<Friend> sList = new LinkedList<Friend>();
 
         System.out.println(
-                "1. Insert records\n2. View record\n3. Remove the record\n4. Update record\n5. Print all records\n6. Exit\n");
+                "1. Insert records\n2. View record\n3. Remove the record\n4. Update record\n5. Print all records\n6. Sort the records\n7. Generate 10 random data for linked list\n8. Exit\n");
 
         System.out.print("Enter your choice: ");
         int choice = intInput.nextInt();
 
         System.out.println();
 
-        while (choice != 6) {
+        while (true) {
             switch (choice) {
                 case 1:
                     System.out.print("Enter the number of friends: ");
@@ -137,13 +140,95 @@ public class Main {
                         System.out.println();
                     }
                     break;
+                case 6:
+                    // check if list is empty
+                    if (sList.size() == 0) {
+                        System.out.println("The list is empty.");
+                        System.out.println();
+                        break;
+                    }
+
+                    System.out.println("Sorting by ID number...");
+                    for (int i = 0; i < sList.size(); i++) {
+                        for (int j = 0; j < sList.size() - i - 1; j++) {
+                            if (sList.get(j).getIdno() > sList.get(j + 1).getIdno()) {
+                                Friend temp = sList.get(j);
+                                sList.set(j, sList.get(j + 1));
+                                sList.set(j + 1, temp);
+                            }
+                        }
+                    }
+                    System.out.println("The data has been sorted.");
+                    System.out.println();
+                    System.out.println("Updated list:");
+                    for (Friend friend : sList) {
+                        System.out.println("ID number: " + friend.getIdno());
+                        System.out.println("Name: " + friend.getName());
+                        System.out.println("Phone number: " + friend.getHpno());
+                        System.out.println("Email: " + friend.getEmail());
+                        System.out.println();
+                    }
+                    break;
+                case 7:
+                    for (int i = 0; i < 10; i++) {
+
+                        int id = (int) (Math.random() * 10000000) + 1;
+                        String name = "";
+                        // read from name.txt
+                        BufferedReader br = null;
+                        try {
+                            br = new BufferedReader(new FileReader("name.txt"));
+                            String line = br.readLine();
+                            int count = 0;
+                            while (line != null) {
+                                // split line by ;
+                                String[] split = line.split(";");
+                                // takes random name from name.txt
+                                if (count == 0) {
+                                    name += split[(int) (Math.random() * split.length)] + " ";
+                                    count++;
+                                } else {
+                                    name += split[(int) (Math.random() * split.length)]+ " ";
+                                }
+
+                                line = br.readLine();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } finally {
+                            try {
+                                br.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        String hpno = "01" + (int) (Math.random() * 9) + "-" + (int) (Math.random() * 1000000) + 1;
+                        String email = name.replaceAll(" ", "").toLowerCase() + (int) (Math.random() * 100) + 1
+                                + "@gmail.com";
+
+                        // check if idno already exists
+                        if (sList.contains(new Friend(id, name, hpno, email))) {
+                            i--;
+                            continue;
+                        } else {
+                            sList.add(new Friend(id, name, hpno, email));
+                        }
+                    }
+                    System.out.println("10 random data has been generated.");
+                    System.out.println();
+                    break;
+                case 8:
+                    System.out.println("Thank you for using this program.");
+                    System.exit(0);
+                    break;
                 default:
                     System.out.println("Invalid choice.");
                     break;
             }
 
             System.out.println(
-                    "1. Insert records\n2. View record\n3. Remove the record\n4. Update record\n5. Print all records\n6. Exit\n");
+                    "1. Insert records\n2. View record\n3. Remove the record\n4. Update record\n5. Print all records\n6. Sort the records\n7. Generate 10 random data for linked list\n8. Exit\n");
 
             System.out.print("Enter your choice: ");
             choice = intInput.nextInt();
