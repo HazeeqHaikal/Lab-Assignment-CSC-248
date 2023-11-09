@@ -278,8 +278,24 @@ public class Main {
                         }
 
                         String hpno = "01" + (int) (Math.random() * 9) + "-" + (int) (Math.random() * 1000000) + 1;
+                        // make email switch between gmail, yahoo, hotmail and outlook
                         String email = name.replaceAll(" ", "").toLowerCase() + (int) (Math.random() * 100) + 1
-                                + "@gmail.com";
+                                + "@"; 
+                        int emailType = (int) (Math.random() * 4) + 1;
+                        switch (emailType) {
+                            case 1:
+                                email += "gmail.com";
+                                break;
+                            case 2:
+                                email += "yahoo.com";
+                                break;
+                            case 3:
+                                email += "hotmail.com";
+                                break;
+                            case 4:
+                                email += "outlook.com";
+                                break;
+                        }
 
                         // check if idno already exists
                         if (sList.contains(new Friend(id, name, hpno, email))) {
