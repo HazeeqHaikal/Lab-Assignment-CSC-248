@@ -108,7 +108,7 @@ public class List {
     public void print() {
         ListNode curr = this.firstNode;
         while (curr != null) {
-            System.out.println(curr.getObj());
+            System.out.println(curr.getObj() + "\n");
             curr = curr.getNext();
         }
     }
