@@ -97,11 +97,19 @@ public class List {
         int count = 0;
         ListNode curr = this.firstNode;
         while (curr != null) {
-            if (((Computer) curr.getObj()).getPrice() <= price) {
+            if (((Computer) curr.getObj()).getPrice() > price) {
                 count++;
             }
             curr = curr.getNext();
         }
         return count;
+    }
+
+    public void print() {
+        ListNode curr = this.firstNode;
+        while (curr != null) {
+            System.out.println(curr.getObj());
+            curr = curr.getNext();
+        }
     }
 }

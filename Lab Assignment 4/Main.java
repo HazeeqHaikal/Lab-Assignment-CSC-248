@@ -6,13 +6,13 @@ public class Main {
         Scanner intInput = new Scanner(System.in);
 
         System.out.print(
-                "1. Insert a new node into list\n2. Delete note from list based on serial number\n3. Print output of computer's information\n4. Count and return the number of computers which exceed a certain amount price\n5. Exit\nEnter your choice: ");
+                "1. Insert a new node into list\n2. Delete note from list based on serial number\n3. Print output of computer's information\n4. Count and return the number of computers which exceed a certain amount price\n5. Display all lists\n6. Exit\n\nEnter your choice: ");
         int choice = intInput.nextInt();
 
         List list = new List();
 
         System.out.println();
-        while (choice != 5) {
+        while (choice != 6) {
             if (choice == 1) {
                 System.out.print("Enter serial number: ");
                 int serialNo = intInput.nextInt();
@@ -20,11 +20,11 @@ public class Main {
                 String brand = strInput.nextLine();
                 System.out.print("Enter year: ");
                 int year = intInput.nextInt();
-                System.out.print("Enter price: ");
+                System.out.print("Enter price (RM): ");
                 double price = intInput.nextDouble();
 
                 System.out.print(
-                        "1. Insert at the beginning of the list\n2. Insert at the end of the list\n3. Insert at middle of the list\nEnter your choice: ");
+                        "\n1. Insert at the beginning of the list\n2. Insert at the end of the list\n3. Insert at middle of the list\n\nEnter your choice: ");
                 int choice2 = intInput.nextInt();
 
                 if (choice2 == 1) {
@@ -43,17 +43,21 @@ public class Main {
             } else if (choice == 3) {
                 System.out.print("Enter serial number: ");
                 int serialNo = intInput.nextInt();
+                System.out.println();
                 list.searchComputer(serialNo);
             } else if (choice == 4) {
-                System.out.print("Enter price to print out which computers price exceed it: ");
+                System.out.print("Enter price to print out which computers price exceed it (RM): ");
                 double price = intInput.nextDouble();
-                System.out.println("Number of computers which exceed " + price + ": " + list.countComputer(price));
+                System.out.println("There's " + list.countComputer(price) + " computers which exceed RM" + price);
+            } else if (choice == 5) {
+                list.print();
             } else {
                 System.out.println("Invalid choice");
             }
             System.out.print(
-                    "\n1. Insert a new node into list\n2. Delete note from list based on serial number\n3. Print output of computer's information\n4. Count and return the number of computers which exceed a certain amount price\n5. Exit\nEnter your choice: ");
+                    "\n1. Insert a new node into list\n2. Delete note from list based on serial number\n3. Print output of computer's information\n4. Count and return the number of computers which exceed a certain amount price\n5. Display all lists\n6. Exit\n\nEnter your choice: ");
             choice = intInput.nextInt();
+            System.out.println();
         }
 
         strInput.close();
