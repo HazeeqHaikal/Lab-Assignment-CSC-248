@@ -99,6 +99,8 @@ public class List {
         while (curr != null) {
             if (((Computer) curr.getObj()).getPrice() > price) {
                 count++;
+                // print out the computer
+                System.out.println(curr.getObj() + "\n");
             }
             curr = curr.getNext();
         }

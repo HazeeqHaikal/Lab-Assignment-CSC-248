@@ -48,7 +48,8 @@ public class Main {
             } else if (choice == 4) {
                 System.out.print("Enter price to print out which computers price exceed it (RM): ");
                 double price = intInput.nextDouble();
-                System.out.println("There's " + list.countComputer(price) + " computers which exceed RM" + price);
+
+                System.out.println("\nThere's " + list.countComputer(price) + " computers which exceed RM" + price);
             } else if (choice == 5) {
                 list.print();
             } else {
