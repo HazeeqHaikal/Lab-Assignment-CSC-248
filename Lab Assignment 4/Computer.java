@@ -44,7 +44,7 @@ public class Computer {
     }
 
     public String toString() {
-        return "Serial number: " + this.serialNo + "\nBrand: " + this.brand + "\nYear: " + this.year + "\nPrice: "
+        return "Serial number: " + this.serialNo + "\nBrand: " + this.brand + "\nYear: " + this.year + "\nPrice: RM "
                 + this.price;
     }
 

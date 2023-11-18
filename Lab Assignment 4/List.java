@@ -9,6 +9,30 @@ public class List {
         this.currNode = null;
     }
 
+    public ListNode getFirstNode() {
+        return this.firstNode;
+    }
+
+    public void setFirstNode(ListNode firstNode) {
+        this.firstNode = firstNode;
+    }
+
+    public ListNode getLastNode() {
+        return this.lastNode;
+    }
+
+    public void setLastNode(ListNode lastNode) {
+        this.lastNode = lastNode;
+    }
+
+    public ListNode getCurrNode() {
+        return this.currNode;
+    }
+
+    public void setCurrNode(ListNode currNode) {
+        this.currNode = currNode;
+    }
+
     public void insertAtFront(Object obj) {
         ListNode newNode = new ListNode(obj, this.firstNode);
         this.firstNode = newNode;
@@ -28,28 +52,31 @@ public class List {
         }
     }
 
+    // insert at middle
     public void insertAtMiddle(Object obj) {
+        ListNode newNode = new ListNode(obj, null);
         if (this.firstNode == null) {
-            this.insertAtFront(obj);
-        } else if (this.firstNode.getNext() == null) {
-            this.insertAtBack(obj);
+            this.firstNode = newNode;
+            this.lastNode = newNode;
         } else {
-            ListNode newNode = new ListNode(obj, null);
+            // put the new node at the middle and not based on the serial number
             ListNode curr = this.firstNode;
-            ListNode prev = null;
+            int count = 0;
             while (curr != null) {
-                if (((Computer) curr.getObj()).getYear() > ((Computer) newNode.getObj()).getYear()) {
-                    break;
-                }
-                prev = curr;
+                count++;
                 curr = curr.getNext();
             }
-            if (prev == null) {
-                newNode.setNext(this.firstNode);
-                this.firstNode = newNode;
-            } else {
-                newNode.setNext(curr);
-                prev.setNext(newNode);
+
+            curr = this.firstNode;
+            for (int i = 0; i < (count / 2) - 1; i++) {
+                curr = curr.getNext();
+            }
+
+            newNode.setNext(curr.getNext());
+            curr.setNext(newNode);
+
+            if (newNode.getNext() == null) {
+                this.lastNode = newNode;
             }
         }
     }
