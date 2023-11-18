@@ -58,7 +58,6 @@ public class Main {
             } else if (choice == 2) {
                 System.out.print("Enter serial number: ");
                 int serialNo = intInput.nextInt();
-                // list.remove(serialNo);
                 if (list.remove(serialNo) == null) {
                     System.out.println("Serial number not found\n");
                 } else {
