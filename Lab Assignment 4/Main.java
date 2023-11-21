@@ -73,6 +73,7 @@ public class Main {
                 double price = intInput.nextDouble();
 
                 System.out.println("\nThere's " + list.countComputer(price) + " computers which exceed RM " + price);
+
             } else if (choice == 5) {
                 list.print();
             } else {

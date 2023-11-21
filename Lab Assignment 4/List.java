@@ -38,6 +38,8 @@ public class List {
         this.firstNode = newNode;
         if (this.lastNode == null) {
             this.lastNode = newNode;
+        } else {
+            this.lastNode.setNext(newNode);
         }
     }
 
@@ -136,9 +138,14 @@ public class List {
 
     public void print() {
         ListNode curr = this.firstNode;
+        boolean empty = true;
         while (curr != null) {
             System.out.println(curr.getObj() + "\n");
             curr = curr.getNext();
+            empty = false;
+        }
+        if (empty) {
+            System.out.println("List is empty");
         }
     }
 }
