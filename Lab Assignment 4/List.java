@@ -83,6 +83,24 @@ public class List {
         }
     }
 
+    public void insertAtIndex(Object obj, int index) {
+        ListNode newNode = new ListNode(obj, null);
+        if (this.firstNode == null) {
+            this.firstNode = newNode;
+            this.lastNode = newNode;
+        } else {
+            ListNode curr = this.firstNode;
+            for (int i = 0; i < index - 1; i++) {
+                curr = curr.getNext();
+            }
+            newNode.setNext(curr.getNext());
+            curr.setNext(newNode);
+            if (newNode.getNext() == null) {
+                this.lastNode = newNode;
+            }
+        }
+    }
+
     public Object remove(int serialNo) {
         ListNode curr = this.firstNode;
         ListNode prev = null;
@@ -131,6 +149,16 @@ public class List {
                 // print out the computer
                 System.out.println(curr.getObj() + "\n");
             }
+            curr = curr.getNext();
+        }
+        return count;
+    }
+
+    public int getSize() {
+        int count = 0;
+        ListNode curr = this.firstNode;
+        while (curr != null) {
+            count++;
             curr = curr.getNext();
         }
         return count;
