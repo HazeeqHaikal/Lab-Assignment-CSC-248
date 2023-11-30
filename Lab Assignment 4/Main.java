@@ -10,6 +10,7 @@ public class Main {
         System.out.println("Welcome to Computer List Program\n");
 
         List list = new List();
+
         while (choice != 6) {
 
             System.out.print(
@@ -23,18 +24,19 @@ public class Main {
 
                 // check if theres any computer with the same serial number
                 ListNode curr = list.getFirstNode();
-                boolean exist = false;
+                // boolean exist = false;
                 while (curr != null) {
                     if (((Computer) curr.getObj()).getSerialNo() == serialNo) {
                         System.out.println("Serial number already exist\n");
-                        exist = true;
-                        break;
+                        // exist = true;
+
+                        System.out.print("Enter serial number: ");
+                        serialNo = intInput.nextInt();
+
+                        // reset curr to first node to check again if theres duplication
+                        curr = list.getFirstNode();
                     }
                     curr = curr.getNext();
-                }
-
-                if (exist) {
-                    continue;
                 }
 
                 System.out.print("Enter brand: ");
@@ -82,7 +84,6 @@ public class Main {
             } else if (choice == 3) {
                 System.out.print("Enter serial number: ");
                 int serialNo = intInput.nextInt();
-                System.out.println();
                 list.searchComputer(serialNo);
             } else if (choice == 4) {
                 System.out.print("Enter price to print out which computers price exceed it (RM): ");
@@ -96,7 +97,7 @@ public class Main {
             } else if (choice == 5) {
                 list.print();
             } else {
-                System.out.println("Invalid choice");
+                System.out.println("Program terminating...");
             }
 
             System.out.println();
@@ -104,7 +105,5 @@ public class Main {
 
         strInput.close();
         intInput.close();
-
-        System.out.println("Program terminating...");
     }
 }
