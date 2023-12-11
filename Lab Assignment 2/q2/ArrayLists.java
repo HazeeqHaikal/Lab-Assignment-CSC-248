@@ -6,7 +6,6 @@ public class ArrayLists {
         Scanner strInput = new Scanner(System.in);
         Scanner intInput = new Scanner(System.in);
 
-        
         ArrayList<String> names = new ArrayList<String>();
         names.add("Khairul");
         names.add("Hazeeq");
@@ -16,10 +15,11 @@ public class ArrayLists {
         for (int i = 0; i < names.size(); i++) {
             names.set(i, names.get(i).toUpperCase());
         }
-        
+
         System.out.println("Current ArrayList: " + names);
-        
-        System.out.print("\n1. Add new elements to the ArrayList\n2. Delete element from a list\n3. The number of elements in the list\n4. To determine either the name exist or not in a list\n5. Sort the list of names in ascending order\n7. Exit\nEnter your choice: ");
+
+        System.out.print(
+                "\n1. Add new elements to the ArrayList\n2. Delete element from a list\n3. The number of elements in the list\n4. To determine either the name exist or not in a list\n5. Sort the list of names in ascending order\n7. Exit\nEnter your choice: ");
         int choice = intInput.nextInt();
 
         System.out.println();
@@ -36,7 +36,7 @@ public class ArrayLists {
             } else if (choice == 2) {
                 System.out.print("Enter the index of the element to be removed: ");
                 int index = intInput.nextInt();
-                try{
+                try {
                     names.get(index);
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("Index out of bounds!");
@@ -57,22 +57,36 @@ public class ArrayLists {
                 }
 
             } else if (choice == 5) {
-                for(int i = 0; i < names.size(); i++) {
-                    for(int j = i + 1; j < names.size(); j++) {
-                        if(names.get(i).compareTo(names.get(j)) > 0) {
+                // bubble sort
+                for (int i = 0; i < names.size(); i++) {
+                    for (int j = i + 1; j < names.size(); j++) {
+                        if (names.get(i).compareTo(names.get(j)) > 0) {
                             String temp = names.get(i);
                             names.set(i, names.get(j));
                             names.set(j, temp);
                         }
                     }
                 }
+
+                // insertion sort
+                for (int i = 1; i < names.size(); i++) {
+                    String temp = names.get(i);
+                    for (int j = i - 1; j >= 0; j--) {
+                        if (names.get(j).compareTo(temp) > 0) {
+                            names.set(j + 1, names.get(j));
+                            names.set(j, temp);
+                        }
+                    }
+                }
+
                 System.out.println("The elements are: " + names);
-            }else if (choice == 7) {
+            } else if (choice == 7) {
                 break;
             } else {
                 System.out.println("Invalid input!");
             }
-            System.out.print("\n1. Add new elements to the ArrayList\n2. Delete element from a list\n3. The number of elements in the list\n4. To determine either the name exist or not in a list\n5. Sort the list of names in ascending order\n7. Exit\nEnter your choice: ");
+            System.out.print(
+                    "\n1. Add new elements to the ArrayList\n2. Delete element from a list\n3. The number of elements in the list\n4. To determine either the name exist or not in a list\n5. Sort the list of names in ascending order\n7. Exit\nEnter your choice: ");
             choice = intInput.nextInt();
 
             System.out.println();

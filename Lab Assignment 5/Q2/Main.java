@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Node {
     int data;
     Node next;
@@ -31,7 +33,9 @@ class LinkedLists {
 
 public class Main {
     public static void main(String[] args) {
-        String exp = "2 6 * 3 - / 5 5 * +";
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the postfix expression: ");
+        String exp = input.nextLine();
 
         LinkedLists stack = new LinkedLists();
         String[] tokens = exp.split(" ");

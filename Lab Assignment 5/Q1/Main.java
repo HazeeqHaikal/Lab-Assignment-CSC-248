@@ -22,6 +22,10 @@ public class Main {
         System.out.print("\nHexadecimal: ");
         for (int i = numbers.size() - 1; i >= 0; i--) {
             if (numbers.get(i) > 9) {
+                // the number 55 is added to the retrieved number. The reason for adding 55 is
+                // because in the ASCII table, the character ‘A’ (which represents 10 in
+                // hexadecimal) is at position 65. So, if you have a number like 10, adding 55
+                // will give you the ASCII value of ‘A’.
                 char hex = (char) (numbers.get(i) + 55);
                 System.out.print(hex);
             } else {
