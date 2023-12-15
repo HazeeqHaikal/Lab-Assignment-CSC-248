@@ -38,6 +38,7 @@ public class Main {
         String exp = input.nextLine();
 
         LinkedLists stack = new LinkedLists();
+        // Stack stack = new Stack();
         String[] tokens = exp.split(" ");
         for (int i = 0; i < tokens.length; i++) {
             if (tokens[i].equals("+")) {
