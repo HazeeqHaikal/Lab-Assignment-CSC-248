@@ -3,18 +3,20 @@ import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
+        // i. Declare a QUEUE object named as qCustomer, to store customer information
         QUEUE qCustomer = new QUEUE();
-        QUEUE qQualify = new QUEUE();
 
         // ii. Declare a QUEUE object named as qQualify, to store customer information
         // data that qualified to apply a loan
+        QUEUE qQualify = new QUEUE();
+
         // iii. Assume a queue for qCustomer has been inserted with some values (please
         // insert some data by the user). Determine either any customers is qualify or
         // disqualify to apply for a loan. If there are any customers qualified to apply
         // for a loan, store the information into qQualify.
         // For simplicity, I'm creating dummy customers. Replace this with actual input.
         for (int i = 0; i < 10; i++) {
-            Customer customer = new Customer("Customer" + i, i, i * 1000, i * 20000);
+            Customer customer = new Customer("Customer " + i, i, i * 1000, i * 20000);
             qCustomer.enqueue(customer);
             if (customer.process()) {
                 qQualify.enqueue(customer);
@@ -23,7 +25,7 @@ public class Main {
 
         // iv. Print all customer information from qQualify list
         while (!qQualify.isEmpty()) {
-            System.out.println(qQualify.dequeue());
+            System.out.println(qQualify.dequeue() + "\n");
         }
     }
 }
@@ -59,12 +61,9 @@ class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", accountNo=" + accountNo +
-                ", saving=" + saving +
-                ", totalTransaction=" + totalTransaction +
-                '}';
+        return "Customer name: " + name + "\nAccount No: " + accountNo + "\nSaving: RM "
+                + String.format("%,.2f", saving)
+                + "\nTotal Transaction: RM " + String.format("%,.2f", totalTransaction);
     }
 
     public boolean process() {

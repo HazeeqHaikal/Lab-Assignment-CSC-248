@@ -10,8 +10,8 @@ public class Main {
         // b) Input ten (10) objects of houses and store them into qHouse.
         // For simplicity, I'm creating dummy houses. Replace this with actual input.
         for (int i = 0; i < 10; i++) {
-            qHouse.add(new House("Semi-D", "Location" + i, i * 1000, i * 20000));
-            qHouse.add(new House("Terrace", "Location" + i, i * 1000, i * 20000));
+            qHouse.add(new House("Semi-D", "Location " + i, i * 300, i * 40000));
+            qHouse.add(new House("Terrace", "Location " + i, i * 300, i * 40000));
         }
 
         // c) Get all houses from qHouse and store all type of semi-D houses into a
@@ -76,6 +76,7 @@ class House {
 
     @Override
     public String toString() {
-        return "House type: " + type + "\nLocation: " + location + "\nSize: " + size + "\nPrice: " + price + "\n";
+        return "House type: " + type + "\nLocation: " + location + "\nSize (Metre): " + String.format("%,.2f", size)
+                + "\nPrice: RM " + String.format("%,.2f", price) + "\n";
     }
 }
