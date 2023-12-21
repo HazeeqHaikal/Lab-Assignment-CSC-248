@@ -1,8 +1,10 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner strInput = new Scanner(System.in);
+        Scanner intInput = new Scanner(System.in);
+
         // i. Declare a QUEUE object named as qCustomer, to store customer information
         QUEUE qCustomer = new QUEUE();
 
@@ -14,9 +16,21 @@ public class Main {
         // insert some data by the user). Determine either any customers is qualify or
         // disqualify to apply for a loan. If there are any customers qualified to apply
         // for a loan, store the information into qQualify.
-        // For simplicity, I'm creating dummy customers. Replace this with actual input.
         for (int i = 0; i < 10; i++) {
-            Customer customer = new Customer("Customer " + i, i, i * 1000, i * 20000);
+            System.out.print("Enter customer name: ");
+            String name = strInput.nextLine();
+
+            System.out.print("Enter account number: ");
+            int accountNo = intInput.nextInt();
+
+            System.out.print("Enter saving (RM): ");
+            double saving = intInput.nextDouble();
+
+            System.out.print("Enter total transaction (RM): ");
+            double totalTransaction = intInput.nextDouble();
+
+            Customer customer = new Customer(name, accountNo, saving, totalTransaction);
+
             qCustomer.enqueue(customer);
             if (customer.process()) {
                 qQualify.enqueue(customer);
@@ -27,7 +41,12 @@ public class Main {
         while (!qQualify.isEmpty()) {
             System.out.println(qQualify.dequeue() + "\n");
         }
+
+        intInput.close();
+        strInput.close();
+
     }
+
 }
 
 class Customer {
@@ -134,14 +153,26 @@ class QUEUE extends ListNode {
     }
 
     public Object getFirst() {
-        return this.first != null ? this.first.data : null;
+        if (this.first != null) {
+            return this.first.data;
+        } else {
+            return null;
+        }
     }
 
     public Object getNext() {
-        return this.first != null && this.first.link != null ? this.first.link.data : null;
+        if (this.first != null && this.first.link != null) {
+            return this.first.link.data;
+        } else {
+            return null;
+        }
     }
 
     public Object getLast() {
-        return this.last != null ? this.last.data : null;
+        if (this.last != null) {
+            return this.last.data;
+        } else {
+            return null;
+        }
     }
 }
