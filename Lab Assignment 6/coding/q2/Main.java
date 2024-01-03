@@ -5,18 +5,16 @@ public class Main {
         Scanner strInput = new Scanner(System.in);
         Scanner intInput = new Scanner(System.in);
 
-        // i. Declare a QUEUE object named as qCustomer, to store customer information
         QUEUE qCustomer = new QUEUE();
 
-        // ii. Declare a QUEUE object named as qQualify, to store customer information
-        // data that qualified to apply a loan
         QUEUE qQualify = new QUEUE();
 
-        // iii. Assume a queue for qCustomer has been inserted with some values (please
-        // insert some data by the user). Determine either any customers is qualify or
-        // disqualify to apply for a loan. If there are any customers qualified to apply
-        // for a loan, store the information into qQualify.
-        for (int i = 0; i < 10; i++) {
+        System.out.print("Please enter number of records: ");
+        int rec = intInput.nextInt();
+
+        System.out.println();
+
+        for (int i = 0; i < rec; i++) {
             System.out.print("Enter customer name: ");
             String name = strInput.nextLine();
 
@@ -35,9 +33,12 @@ public class Main {
             if (customer.process()) {
                 qQualify.enqueue(customer);
             }
+
+            System.out.println();
         }
 
-        // iv. Print all customer information from qQualify list
+        System.out.println("List of customers that has more than RM 1000 saving after transaction:\n");
+
         while (!qQualify.isEmpty()) {
             System.out.println(qQualify.dequeue() + "\n");
         }
@@ -86,7 +87,7 @@ class Customer {
     }
 
     public boolean process() {
-        return saving > 1000;
+        return saving - totalTransaction > 1000;
     }
 }
 

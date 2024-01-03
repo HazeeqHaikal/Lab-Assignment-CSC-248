@@ -13,7 +13,7 @@ public class Main {
         Queue temporary = new Queue();
 
         // b) Input ten (10) objects of houses and store them into qHouse.
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.print("1. Semi-D\n2. Terrace\nEnter house type: ");
             int typeInt = intInput.nextInt();
 
