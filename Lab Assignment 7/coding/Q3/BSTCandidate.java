@@ -14,6 +14,24 @@ public class BSTCandidate {
         this.root = root;
     }
 
+    // insert new candidate into the tree
+    public void insert(JobCandidate data) {
+        root = insert(root, data);
+    }
+
+    private TreeNode insert(TreeNode root, JobCandidate data) {
+        if (root == null) {
+            root = new TreeNode(data);
+        } else {
+            if (data.getRegNo() < root.getData().getRegNo()) {
+                root.setLeft(insert(root.getLeft(), data));
+            } else {
+                root.setRight(insert(root.getRight(), data));
+            }
+        }
+        return root;
+    }
+
     // display details of all candidates using recursive method to display detail of
     // candidate name in descending order
     public void displayDetails() {

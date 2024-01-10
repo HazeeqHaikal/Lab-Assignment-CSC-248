@@ -1,4 +1,3 @@
-package Q1;
 public class TreeNode {
     // data declaration
     private Object element;

@@ -1,4 +1,3 @@
-package Q1;
 public class Book {
     private int serialNum;
     private String title;

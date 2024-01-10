@@ -1,6 +1,3 @@
-package Q1;
-import java.util.LinkedList;
-
 public class bookRecord {
     private TreeNode root;
 
