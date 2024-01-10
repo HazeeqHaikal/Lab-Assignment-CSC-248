@@ -63,6 +63,7 @@ public class Main {
                     record.displayAll();
                     break;
                 case 4:
+                    input.close();
                     System.out.println("Thank you for using this program!");
                     System.exit(0);
                     break;

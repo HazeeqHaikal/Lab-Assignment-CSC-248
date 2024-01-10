@@ -6,7 +6,6 @@ public class Main {
         Scanner intInput = new Scanner(System.in);
         BSTcCrimeComplaint bst = new BSTcCrimeComplaint();
 
-
         String[][] complaints = {
                 { "Complaint Elements", "Year", "Total Complaints" },
                 { "Obscene", "2019", "969" },
@@ -27,53 +26,7 @@ public class Main {
             bst.insertNode(new CCrimeComplaint(complaints[i][0], Integer.parseInt(complaints[i][2]),
                     Integer.parseInt(complaints[i][1])));
         }
-
-        // System.out.println("1. Display all complaint elements");
-        // System.out.println("2. Display specific complaint elements");
-        // System.out.println("3. Calculate total complaints for a specific year");
-        // System.out.println("4. Calculate increment percentage for total number of complaints from 2019 to 2020");
-        // System.out.println("5. Exit");
-        // System.out.print("\nEnter your choice: ");
-        // int choice = intInput.nextInt();
-
-        // switch (choice) {
-        //     case 1:
-        //         bst.cElementDisplayAll();
-        //         break;
-        //     case 2:
-        //         System.out.print("Enter complaint element: ");
-        //         String cElement = strInput.nextLine();
-        //         bst.displayBySpesific(cElement);
-        //         break;
-        //     case 3:
-        //         System.out.print("Enter year: ");
-        //         int year = intInput.nextInt();
-        //         System.out.println("\nTotal complaints for year " + year + ": " + bst.calTotComplaint(year));
-        //         break;
-        //     case 4:
-        //         System.out.println("\n2020 complaint amount: " + bst.calTotComplaint(2020));
-        //         System.out.println("2019 complaint amount: " + bst.calTotComplaint(2019));
-
-        //         // change to double to get decimal
-        //         double percentage = ((double) (bst.calTotComplaint(2020) - bst.calTotComplaint(2019))
-        //                 / (double) bst.calTotComplaint(2019)) * 100;
-
-        //         System.out.println("\n((" + bst.calTotComplaint(2020) + " - " + bst.calTotComplaint(2019) + ") / "
-        //                 + bst.calTotComplaint(2019) + ") * 100 = " + percentage + "%");
-
-        //         System.out.println("\nIncrement percentage for total number of complaints from 2019 to 2020: "
-        //                 + String.format("%.2f", percentage) + "%");
-
-        //         break;
-        //     case 5:
-        //         System.exit(0);
-        //         break;
-        //     default:
-        //         System.out.println("Invalid choice");
-        //         break;
-        // }
-
-        // put into while loop
+        
         while (true) {
             System.out.println("1. Display all complaint elements");
             System.out.println("2. Display specific complaint elements");
@@ -113,6 +66,7 @@ public class Main {
 
                     break;
                 case 5:
+                    System.out.println("Thank you for using this program");
                     System.exit(0);
                     break;
                 default:
